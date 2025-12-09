@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #2d3358;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-slate-900;
+}
+
+.container-default {
+  @apply container max-w-7xl;
+}
+
+.btn-primary {
+  @apply inline-flex items-center rounded-lg bg-primary text-white px-6 py-3 text-sm font-medium hover:opacity-90 transition;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center rounded-lg bg-darkTertiary text-white px-5 py-3 text-sm;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
