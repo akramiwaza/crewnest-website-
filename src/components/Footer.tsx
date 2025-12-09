@@ -16,14 +16,14 @@ const data = {
   footer: {
     links: [
       [
-        { label: "About", href: "#" },
-        { label: "Lister", href: "#" },
-        { label: "Seeker", href: "#" },
+        { label: "About", href: "#about" },
+        { label: "Insights", href: "#insights" },
+        { label: "Contact Us", href: "#contact" },
       ],
       [
-        { label: "Help center", href: "#" },
-        { label: "Privacy policy", href: "#" },
-        { label: "Terms and Conditions", href: "#" },
+        { label: "Help center", href: "#contact" },
+        { label: "Privacy policy", href: "/privacy-policy" },
+        { label: "Terms and Conditions", href: "/terms-and-conditions" },
       ],
     ],
   },
@@ -199,7 +199,15 @@ export default async function Footer({
               )}
             </div>
             <div className="text-sm text-bodySecondary">
-              © All rights reserved. Made by Compu-vision
+              © All rights reserved. Made by{" "}
+              <a
+                href="https://www.compu-vision.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white transition-colors"
+              >
+                Compu-vision
+              </a>
             </div>
           </div>
 
@@ -224,19 +232,27 @@ export default async function Footer({
           {/* Right Section - Contact and Newsletter */}
           <div className="w-full lg:max-w-xs space-y-6">
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm text-body flex-wrap">
+              <a
+                href={`mailto:${footerData.settings.contact.email}`}
+                className="flex items-center gap-2 text-sm text-body flex-wrap hover:text-white transition-colors"
+                aria-label="Email"
+              >
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 <span className="break-all">
                   {footerData.settings.contact.email}
                 </span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-body">
+              </a>
+              <a
+                href={`tel:${footerData.settings.contact.phone.code}${footerData.settings.contact.phone.number}`}
+                className="flex items-center gap-2 text-sm text-body hover:text-white transition-colors"
+                aria-label="Phone"
+              >
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span>
                   {footerData.settings.contact.phone.code}{" "}
                   {footerData.settings.contact.phone.number}
                 </span>
-              </div>
+              </a>
             </div>
           </div>
           <div>

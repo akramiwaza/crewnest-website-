@@ -91,7 +91,7 @@ export default function AboutSection({
         {/* Mobile layout: single active card with its image above */}
         <div className="lg:hidden mb-10">
           <div className="flex flex-col items-center">
-            <div className="w-full max-w-xs sm:max-w-sm relative top-4">
+            <div className="w-full max-w-xs sm:max-w-sm relative top-10">
               <Image
                 src={
                   `${process.env.NEXT_PUBLIC_SITE_URL_IMAGE}/${activeFeature.image}` ||

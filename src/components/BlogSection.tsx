@@ -3,6 +3,7 @@
 import { FeaturedNewsData, NewsSectionData } from "@/lib/api";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function BlogSection({
@@ -75,7 +76,8 @@ export default function BlogSection({
                     slideIndex * itemsPerView + itemsPerView
                   )
                   .map((b) => (
-                    <article
+                    <Link
+                      href={`/news/${b._id}`}
                       key={b._id}
                       className="rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
                     >
@@ -111,7 +113,7 @@ export default function BlogSection({
                           {b.description}
                         </p>
                       </div>
-                    </article>
+                    </Link>
                   ))}
               </div>
             ))}

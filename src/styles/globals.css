@@ -6,6 +6,10 @@
   --brand-primary: #2d3358;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;

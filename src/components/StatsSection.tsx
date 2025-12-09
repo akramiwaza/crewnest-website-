@@ -6,7 +6,7 @@ export default async function StatsSection({
 }) {
   return (
     <section className="px-10 py-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-8 items-start">
         {statsData.map((s) => (
           <div key={s._id} className="text-center">
             <div className="flex items-center gap-2 justify-center">
