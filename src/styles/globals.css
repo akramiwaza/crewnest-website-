@@ -6,7 +6,8 @@
   --brand-primary: #2d3358;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -15,7 +16,7 @@ body {
 }
 
 .container-default {
-  @apply container max-w-7xl;
+  @apply container max-w-full;
 }
 
 .btn-primary {
@@ -40,4 +41,3 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-out;
 }
-

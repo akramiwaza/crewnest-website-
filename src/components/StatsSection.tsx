@@ -1,18 +1,32 @@
-import { getLandingData } from '@/lib/api'
-
-export default async function StatsSection() {
-  const data = await getLandingData()
+import { StatsData } from "@/lib/api";
+export default async function StatsSection({
+  statsData,
+}: {
+  statsData: StatsData[];
+}) {
   return (
-    <section className="container-default py-8">
+    <section className="px-10 py-8">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-start">
-        {data.stats.map((s, i) => (
-          <div key={i} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-slate-900">{s.value}</div>
-            <div className="mt-2 text-slate-600">{s.label}</div>
+        {statsData.map((s) => (
+          <div key={s._id} className="text-center">
+            <div className="flex items-center gap-2 justify-center">
+              <div className="text-3xl md:text-[40px] font-bold text-black">
+                {s.type === "rating"
+                  ? `${s.value} ★`
+                  : typeof s.value === "number"
+                  ? "+" + s.value.toLocaleString()
+                  : String(s.value)}
+              </div>
+              <span className="text-[20px] font-normal text-black">
+                {s.title}
+              </span>
+            </div>
+            <p className="mt-[8px] text-[16px] text-slate-600">
+              {s.description}
+            </p>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }
-

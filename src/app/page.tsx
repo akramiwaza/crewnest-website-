@@ -6,38 +6,57 @@ import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
-import DownloadBanner from "@/components/DownloadBanner";
 import Footer from "@/components/Footer";
+import { getLandingData } from "@/lib/api";
 
-export default function Page() {
+export default async function Page() {
+  const data = await getLandingData();
+  const heroData = data.homePage.banner;
+  const aboutData = data.homePage.aboutSection;
+  const statsData = data.homePage.statsSection;
+  const testimonialsData = data.homePage.testimonials;
+  const testimonialsSectionData = data.homePage.testimonialsSection;
+  const blogSectionData = data.homePage.newsSection;
+  const featuredNewsData = data.homePage.featuredNews;
+  const contactSectionData = data.homePage.contactSection;
+  const footerData = data.footer;
+  const keyFeaturesData = data.homePage.keyFeatures;
+  const logoData = data.footer.settings.logo;
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header logoData={logoData} />
       <main>
         <Suspense fallback={<div className="container-default py-16" />}>
           {/* Hero */}
-          <HeroSection />
+          <HeroSection heroData={heroData} />
         </Suspense>
         <Suspense fallback={<div className="container-default py-12" />}>
-          <AboutSection />
+          <AboutSection
+            aboutData={aboutData}
+            keyFeaturesData={keyFeaturesData}
+          />
         </Suspense>
         <Suspense fallback={<div className="container-default py-8" />}>
-          <StatsSection />
+          <StatsSection statsData={statsData} />
         </Suspense>
         <Suspense fallback={<div className="container-default py-12" />}>
-          <TestimonialsSection />
+          <TestimonialsSection
+            testimonialsData={testimonialsData}
+            testimonialsSectionData={testimonialsSectionData}
+          />
         </Suspense>
         <Suspense fallback={<div className="container-default py-12" />}>
-          <BlogSection />
+          <BlogSection
+            featuredNewsData={featuredNewsData}
+            newsSectionData={blogSectionData}
+          />
         </Suspense>
         <Suspense fallback={<div className="container-default py-12" />}>
-          <ContactSection />
-        </Suspense>
-        <Suspense fallback={<div className="container-default py-12" />}>
-          <DownloadBanner />
+          <ContactSection contactSectionData={contactSectionData} />
         </Suspense>
       </main>
-      <Footer />
+      <Footer footerData={footerData} heroData={heroData} />
     </div>
   );
 }
